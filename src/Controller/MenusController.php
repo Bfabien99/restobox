@@ -12,23 +12,23 @@ class MenusController extends AbstractController
     public function all_menus(): Response
     {
         return $this->render('menus/index.html.twig', [
-            'controller_name' => 'MenusController',
+            'page_title' => 'Tous les menus'
         ]);
     }
 
-    #[Route('/menus', name: 'one_menus')]
-    public function one_menus(): Response
+    #[Route('/menus/{id}', name: 'one_menus', requirements: ['id' => '\d+'])]
+    public function one_menus(int $id): Response
     {
-        return $this->render('menus/index.html.twig', [
-            'controller_name' => 'MenusController',
+        return $this->render('menus/one.html.twig', [
+            'page_title' => "le menus $id"
         ]);
     }
 
-    #[Route('/menus', name: 'category_menus')]
-    public function category_menus(): Response
+    #[Route('/menus/category/{name}', name: 'category_menus')]
+    public function category_menus(string $name): Response
     {
-        return $this->render('menus/index.html.twig', [
-            'controller_name' => 'MenusController',
+        return $this->render('menus/category.html.twig', [
+            'page_title' => "les menus de la categorie $name"
         ]);
     }
 }
