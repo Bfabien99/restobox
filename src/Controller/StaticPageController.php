@@ -8,8 +8,24 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class StaticPageController extends AbstractController
 {
-    #[Route('/static/page', name: 'app_static_page')]
-    public function index(): Response
+    #[Route('/accueil', name: 'home')]
+    public function home(): Response
+    {
+        return $this->render('static_page/index.html.twig', [
+            'controller_name' => 'StaticPageController',
+        ]);
+    }
+
+    #[Route('/contact', name: 'contact')]
+    public function contact(): Response
+    {
+        return $this->render('static_page/index.html.twig', [
+            'controller_name' => 'StaticPageController',
+        ]);
+    }
+
+    #[Route('/a-propos', name: 'about')]
+    public function about(): Response
     {
         return $this->render('static_page/index.html.twig', [
             'controller_name' => 'StaticPageController',
